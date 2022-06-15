@@ -7,7 +7,7 @@ module.exports = {
 	],
 	theme: {
 		fontFamily: {
-			'sans': ['Mulish', ...defaultTheme.fontFamily.sans]
+			'sans': ['Noto Sans', ...defaultTheme.fontFamily.sans]
 		},
 		extend: {},
 	},
