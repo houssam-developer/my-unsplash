@@ -10,3 +10,16 @@
 		@apply text-base max-w-[300px];
 	}
 }
+
+.container-masonry {
+	padding: 1em;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1em;
+}
+
+.card-tall {
+	grid-row: span 2 / auto;
+	border: 1px solid red;
+}
