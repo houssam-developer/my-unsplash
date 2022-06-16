@@ -26,25 +26,41 @@ function App() {
 				</div>
 
 				{/* Button */}
-				<button className='p-4 px-8 text-xs sm:text-base ml-auto rounded-xl text-white font-bold bg-[#3DB46D] '>Add a photo</button>
+				<button className='p-4 px-8 text-xs sm:text-base ml-auto rounded-xl shadow-lg text-white font-bold bg-[#3DB46D] '>Add a photo</button>
 			</header>
 
 			<main>
 				<ul className='container-masonry'>
-					{[...Array(7).keys()].map((it, idx) =>
-						idx === 1 || idx === 6 ?
-							<li className='max-w-full card-tall'>
-								<img className=' max-w-full  rounded-2xl' src={`/stock-images/mystock-image-${it}.jpg`} alt="" srcset="" />
-							</li>
-							:
-							<li className='max-w-full max-h-[280px]'>
-								<img className=' rounded-2xl' src={`/stock-images/mystock-image-${it}.jpg`} alt="" srcset="" />
-							</li>
-					)}
+					{[...Array(7).keys()].map(idx => <CardItem idx={idx} />)}
 				</ul>
 			</main>
 		</div>
 	)
+
+	function CardItem({ idx }) {
+		const isCardTall = idx === 1 || idx === 4 || idx === 6;
+		const cssClassesCard = isCardTall ? 'max-w-full card-tall' : 'max-w-full';
+		const cssClassesContainerImage = isCardTall ? 'container-ratio card__image' : 'card__image';
+
+		return (
+			<li className={cssClassesCard}>
+				<article className='card'>
+					<div className={cssClassesContainerImage}>
+						<img className=' rounded-2xl' src={`/stock-images/mystock-image-${idx}.jpg`} alt="" srcset="" />
+					</div>
+					<div className='card__content'>
+						<div className='card__content__container-btn'>
+							<button className='py-2 px-4 rounded-full border-[1px] border-[#EB5757] text-[#EB5757] font-medium text-xs'>delete</button>
+						</div>
+						<div className='card__content__container-description'>
+							<p className='text-white font-bold text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, adipisci.</p>
+						</div>
+					</div>
+				</article>
+			</li>
+		);
+	}
+
 }
 
 export default App;
