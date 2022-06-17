@@ -1,10 +1,12 @@
 import React from 'react'
-
 import { useEffect, useRef, useState } from 'react';
-
 import './ModalAddNewPhoto.scss';
 
-function ModalAddNewPhoto({ showModal, fnCloseModalAddNewPhoto }) {
+const CSS_MODAL_DEFAULT_VALUES = 'modal-common';
+const CSS_MODAL_VISIBLE = `${CSS_MODAL_DEFAULT_VALUES} flex`;
+const CSS_MODAL_HIDDEN = `${CSS_MODAL_DEFAULT_VALUES} hidden`;
+
+function ModalAddNewPhoto({ showModal, fnCloseModal }) {
 	const [cssClasses, setCssClasses] = useState('');
 	const [displayModal, setDisplayModal] = useState(false);
 
@@ -14,16 +16,15 @@ function ModalAddNewPhoto({ showModal, fnCloseModalAddNewPhoto }) {
 
 	function handleModalContainerClickEvent(e) {
 		e.preventDefault();
-		if (e.target === modalContainerRef.current) {
-			handleBtnCancelEvent(e);
-		}
+
+		if (e.target === modalContainerRef.current) { handleBtnCancelEvent(e); }
 	}
 
 	function handleBtnCancelEvent(e) {
 		e.preventDefault();
 
-		fnCloseModalAddNewPhoto(true);
-		setCssClasses('modal-z-index absolute w-screen h-screen hidden');
+		fnCloseModal(true);
+		setCssClasses(CSS_MODAL_HIDDEN);
 		setDisplayModal(false);
 
 		console.log(`🔥 handleBtnCancelEvent()`);
@@ -31,8 +32,8 @@ function ModalAddNewPhoto({ showModal, fnCloseModalAddNewPhoto }) {
 
 	useEffect(() => {
 		console.log(`📦 #useEffect() #displayModal ${displayModal}`);
-		if (displayModal) { setCssClasses('modal-z-index absolute w-screen h-screen flex justify-center items-center'); }
-		else { setCssClasses('modal-z-index absolute w-screen h-screen hidden'); }
+		if (displayModal) { setCssClasses(CSS_MODAL_VISIBLE); }
+		else { setCssClasses(CSS_MODAL_HIDDEN); }
 	}, [displayModal])
 
 	useEffect(() => {
@@ -43,7 +44,7 @@ function ModalAddNewPhoto({ showModal, fnCloseModalAddNewPhoto }) {
 
 	return (
 		<div ref={modalContainerRef} onClick={handleModalContainerClickEvent} className={cssClasses}>
-			<div className='bg-white py-8 px-4 mx-4 w-full rounded-lg sm:mx-auto sm:max-w-[620px] sm:px-8 flex flex-col gap-6'>
+			<div className='bg-white p-8 rounded-lg min-w-[280px] sm:min-w-[500px] sm:max-w-[620px] sm:px-8 flex flex-col gap-6 '>
 				<h2 className="font-['Noto_Sans'] font-medium text-xl sm:text-2xl text-[#333333]">Add new photo</h2>
 				<form className="text-sm font-medium text-[#4f4f4f] font-['Noto_Sans'] flex flex-col gap-6" >
 					<div className="flex flex-col gap-2">
@@ -65,7 +66,7 @@ function ModalAddNewPhoto({ showModal, fnCloseModalAddNewPhoto }) {
 				</form>
 			</div>
 		</div>
-	)
+	);
 }
 
 export default ModalAddNewPhoto

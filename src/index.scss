@@ -10,6 +10,8 @@
 @tailwind utilities;
 
 :root {
+	--max-page-width: 1024px;
+
 	--card-content--display: none;
 	--card-image--brightness: 100;
 
@@ -33,7 +35,7 @@
 
 body {
 	@apply font-sans;
-	max-width: 1024px;
+	max-width: var(--max-page-width);
 	margin: 0 auto;
 	background-color: var(--full-page--bg);
 }
@@ -52,5 +54,11 @@ input {
 }
 
 .modal-z-index {
+	z-index: var(--modal--z-index);
+}
+
+.modal-common {
+	@apply absolute transition-all justify-center items-center w-full h-full;
+	max-width: var(--max-page-width);
 	z-index: var(--modal--z-index);
 }

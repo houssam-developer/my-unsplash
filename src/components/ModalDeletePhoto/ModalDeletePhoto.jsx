@@ -1,11 +1,50 @@
 import React from 'react'
-
+import { useEffect, useRef, useState } from 'react';
 import './ModalDeletePhoto.scss';
 
-function ModalDeletePhoto() {
+const CSS_MODAL_DEFAULT_VALUES = 'modal-common';
+const CSS_MODAL_VISIBLE = `${CSS_MODAL_DEFAULT_VALUES} flex`;
+const CSS_MODAL_HIDDEN = `${CSS_MODAL_DEFAULT_VALUES} hidden`;
+
+function ModalDeletePhoto({ showModal, fnCloseModal }) {
+	const [cssClasses, setCssClasses] = useState('');
+	const [displayModal, setDisplayModal] = useState(false);
+
+	const modalContainerRef = useRef();
+
+	console.log(`🚀 ModalDeletePhoto.init()`);
+
+	function handleModalContainerClickEvent(e) {
+		e.preventDefault();
+
+		if (e.target === modalContainerRef.current) { handleBtnCancelEvent(e); }
+	}
+
+	function handleBtnCancelEvent(e) {
+		e.preventDefault();
+
+		fnCloseModal(true);
+		setCssClasses(CSS_MODAL_HIDDEN);
+		setDisplayModal(false);
+
+		console.log(`🔥 handleBtnCancelEvent()`);
+	}
+
+	useEffect(() => {
+		console.log(`📦 #useEffect() #displayModal ${displayModal}`);
+		if (displayModal) { setCssClasses(CSS_MODAL_VISIBLE); }
+		else { setCssClasses(CSS_MODAL_HIDDEN); }
+	}, [displayModal])
+
+	useEffect(() => {
+		console.log(`📦 #useEffect() #showModal ${showModal}`);
+		setDisplayModal(showModal);
+	}, [showModal])
+
+
 	return (
-		<div className='modal-z-index absolute w-screen h-screen flex justify-center items-center'>
-			<div className='bg-white py-8 px-4 mx-4 w-full rounded-lg sm:mx-auto sm:max-w-[620px] sm:px-8 flex flex-col gap-6'>
+		<div ref={modalContainerRef} className={cssClasses} onClick={handleModalContainerClickEvent}>
+			<div className='bg-white py-8 px-4 mx-4 w-full rounded-lg sm:max-w-[620px] sm:px-8 flex flex-col gap-6'>
 				<h2 className="font-['Noto_Sans'] font-medium text-xl sm:text-2xl text-[#333333]">Are you sure ?</h2>
 				<form className="text-sm font-medium text-[#4f4f4f] font-['Noto_Sans'] flex flex-col gap-6" >
 
@@ -16,7 +55,7 @@ function ModalDeletePhoto() {
 						</div>
 					</div>
 					<div className="flex items-center justify-end gap-4 " >
-						<button className='px-4 py-3  shadow font-medium text-[#BDBDBD] rounded-xl border-[1px] border-transparent hover:border-[#BDBDBD] transition-colors'>Cancel</button>
+						<button onClick={handleBtnCancelEvent} className='px-4 py-3  shadow font-medium text-[#BDBDBD] rounded-xl border-[1px] border-transparent hover:border-[#BDBDBD] transition-colors'>Cancel</button>
 						<button className='px-4 py-3  shadow font-medium border-[1px] border-transparent bg-[#EB5757] text-white rounded-xl' type='submit'>Delete</button>
 					</div>
 				</form>
