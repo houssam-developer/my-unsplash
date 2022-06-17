@@ -1,6 +1,6 @@
-:root {
-	--card-content--display: none;
-	--card-image--brightness: 100;
+.full-page-filter {
+	filter: brightness(var(--full-page--brightness));
+	transition: all 150ms;
 }
 
 .container-input {
@@ -74,13 +74,13 @@
 	}
 
 	&__image {
-		z-index: 10;
+		z-index: var(--card__image--z-index);
 		filter: brightness(calc(var(--card-image--brightness) * 1%));
 		transition: all 150ms;
 	}
 
 	&__content {
-		z-index: 20;
+		z-index: var(--card__content--z-index);
 
 		display: var(--card-content--display);
 		flex-direction: column;
