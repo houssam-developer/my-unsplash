@@ -1,0 +1,47 @@
+.card {
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+
+	&:hover {
+		--card-content--display: flex;
+		--card-image--brightness: 70;
+	}
+
+	&__image,
+	&__content {
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+	}
+
+	&__image {
+		z-index: var(--card__image--z-index);
+		filter: brightness(calc(var(--card-image--brightness) * 1%));
+		transition: all 150ms;
+	}
+
+	&__content {
+		z-index: var(--card__content--z-index);
+
+		display: var(--card-content--display);
+		flex-direction: column;
+
+		&__container-btn {
+			padding: 1em;
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+
+		}
+
+		&__container-description {
+			padding: 1em;
+			flex-grow: 1;
+
+			display: flex;
+			align-items: flex-end;
+		}
+	}
+}

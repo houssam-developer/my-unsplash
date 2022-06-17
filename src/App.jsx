@@ -6,6 +6,8 @@ import path from 'path';
 import ModalAddNewPhoto from './components/ModalAddNewPhoto/ModalAddNewPhoto';
 import ModalDeletePhoto from './components/ModalDeletePhoto/ModalDeletePhoto';
 import CardItem from './components/CardItem/CardItem';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const ROOT_DOCUMENT = document.documentElement;
 
@@ -13,21 +15,46 @@ function App() {
 	const [showModalAddNewPhotoFlag, setShowModalAddNewPhotoFlag] = useState(false);
 	const [showModalDeletePhotoFlag, setShowModalDeletePhotoFlag] = useState(false);
 
+	console.log(`🚀 App.init()`);
 
-
-	function handleBtnAddPhoto(e) {
+	function handleBtnAddNewPhoto(e) {
 		e.preventDefault();
-		console.log(`🔥 handleBtnAddPhoto() `);
+		console.log(`🔥 handleBtnAddNewPhoto() `);
+		setShowModalDeletePhotoFlag(false);
 		setShowModalAddNewPhotoFlag(true);
 
+		updateCssVariablesOnOpenModal();
+	}
+
+	function handleBtnDeletePhoto(e, idx) {
+		e.preventDefault();
+		console.log(`🔥 handleBtnDeletePhoto() `);
+
+		setShowModalAddNewPhotoFlag(false);
+		setShowModalDeletePhotoFlag(true);
+
+		updateCssVariablesOnOpenModal();
+	}
+
+	function updateCssVariablesOnOpenModal() {
 		ROOT_DOCUMENT.style.setProperty('--full-page--brightness', '70%');
 		ROOT_DOCUMENT.style.setProperty('--full-page--bg', '#bdbdbd');
+	}
 
+	function updateCssVariablesOnCloseModal() {
+		ROOT_DOCUMENT.style.setProperty('--full-page--brightness', '100%');
+		ROOT_DOCUMENT.style.setProperty('--full-page--bg', '#fff');
+	}
+
+	function closeModal(closeModalFlag) {
+		console.log(`🔥 closeModal() #innerFlag: ${closeModalFlag}`);
+		if (closeModalFlag) { updateCssVariablesOnCloseModal(); }
+		setShowModalAddNewPhotoFlag(false);
 	}
 
 	return (
 		<div className="px-2 py-4 w-full">
-			{showModalAddNewPhotoFlag && <ModalAddNewPhoto />}
+			<ModalAddNewPhoto key={showModalAddNewPhotoFlag} showModal={showModalAddNewPhotoFlag} fnCloseModalAddNewPhoto={closeModal} />
 			{showModalDeletePhotoFlag && <ModalDeletePhoto />}
 			<div className="w-full flex flex-col gap-14 full-page-filter">
 				<header className="flex flex-wrap gap-4 md:gap-8 lg:gap-10 xl:gap-14 ">
@@ -47,12 +74,12 @@ function App() {
 					</div>
 
 					{/* Button */}
-					<button onClick={handleBtnAddPhoto} className='p-4 px-8 text-xs sm:text-base ml-auto rounded-xl shadow-lg text-white font-bold bg-[#3DB46D] '>Add a photo</button>
+					<button onClick={handleBtnAddNewPhoto} className='p-4 px-8 text-xs sm:text-base ml-auto rounded-xl shadow-lg text-white font-bold bg-[#3DB46D] '>Add a photo</button>
 				</header>
 
 				<main className=''>
 					<ul className='container-masonry'>
-						{[...Array(7).keys()].map(idx => <CardItem idx={idx} />)}
+						{[...Array(7).keys()].map(idx => <CardItem key={uuidv4()} idx={idx} fnBtnDeletePhoto={handleBtnDeletePhoto} />)}
 					</ul>
 				</main>
 			</div>
