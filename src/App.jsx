@@ -7,6 +7,7 @@ import ModalAddNewPhoto from './components/ModalAddNewPhoto/ModalAddNewPhoto';
 import ModalDeletePhoto from './components/ModalDeletePhoto/ModalDeletePhoto';
 import CardItem from './components/CardItem/CardItem';
 import { v4 as uuidv4 } from 'uuid';
+import { apiService } from './services/ApiService';
 
 
 const ROOT_DOCUMENT = document.documentElement;
@@ -16,6 +17,10 @@ function App() {
 	const [showModalDeletePhotoFlag, setShowModalDeletePhotoFlag] = useState(false);
 
 	console.log(`🚀 App.init()`);
+
+	useEffect(() => {
+		apiService.findAll();
+	}, []);
 
 	function handleBtnAddNewPhoto(e) {
 		e.preventDefault();

@@ -25,4 +25,4 @@ function CardItem({ idx, fnBtnDeletePhoto }) {
 	);
 }
 
-export default CardItem
+export default CardItem;
