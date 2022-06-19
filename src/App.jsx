@@ -1,7 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import './App.scss';
-import { MdPerson, MdSearch } from "react-icons/md";
+import { MdPerson, MdSearch, MdSync } from "react-icons/md";
 import path from 'path';
 import ModalAddNewPhoto from './components/ModalAddNewPhoto/ModalAddNewPhoto';
 import ModalDeletePhoto from './components/ModalDeletePhoto/ModalDeletePhoto';
@@ -15,11 +15,17 @@ const ROOT_DOCUMENT = document.documentElement;
 function App() {
 	const [showModalAddNewPhotoFlag, setShowModalAddNewPhotoFlag] = useState(false);
 	const [showModalDeletePhotoFlag, setShowModalDeletePhotoFlag] = useState(false);
+	const [photos, setPhotos] = useState([]);
 
 	console.log(`🚀 App.init()`);
 
 	useEffect(() => {
-		apiService.findAll();
+		apiService.findAll()
+			.then(res => {
+				console.log(`📡 data.photos: `, res.data.photos);
+				setPhotos(res.data.photos);
+			})
+			.catch(err => console.log(`🚩 findAll() #err: `, err))
 	}, []);
 
 	function handleBtnAddNewPhoto(e) {
@@ -85,7 +91,7 @@ function App() {
 
 				<main className=''>
 					<ul className='container-masonry'>
-						{[...Array(7).keys()].map(idx => <CardItem key={uuidv4()} idx={idx} fnBtnDeletePhoto={handleBtnDeletePhoto} />)}
+						{photos.map((photo, idx) => <CardItem key={uuidv4()} photo={photo} idx={idx} fnBtnDeletePhoto={handleBtnDeletePhoto} />)}
 					</ul>
 				</main>
 			</div>

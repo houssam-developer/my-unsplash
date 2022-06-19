@@ -19,6 +19,9 @@
 		z-index: var(--card__image--z-index);
 		filter: brightness(calc(var(--card-image--brightness) * 1%));
 		transition: all 150ms;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: cover;
 	}
 
 	&__content {
@@ -43,5 +46,38 @@
 			display: flex;
 			align-items: flex-end;
 		}
+	}
+}
+
+
+.card-tall {
+	grid-row: span 1 / auto;
+
+	@media screen and (min-width: 673px) {
+		grid-row: span 2 / auto;
+	}
+}
+
+.container-ratio {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 100%;
+
+	@media screen and (min-width: 673px) {
+		grid-row: span 2 / auto;
+		position: relative;
+		width: 100%;
+		height: 0;
+		padding-bottom: 150%;
+	}
+
+	& img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 }
