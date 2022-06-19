@@ -14,7 +14,7 @@ function CardItem({ idx, photo = {}, fnBtnDeletePhoto }) {
 				</div>
 				<div className='card__content'>
 					<div className='card__content__container-btn'>
-						<button onClick={(e) => fnBtnDeletePhoto(e, idx)} className='py-2 px-4 rounded-full border-[1px] border-[#EB5757] text-[#EB5757] font-medium text-xs'>delete</button>
+						<button onClick={(e) => fnBtnDeletePhoto(e, photo)} className='py-2 px-4 rounded-full border-[1px] border-[#EB5757] text-[#EB5757] font-medium text-xs'>delete</button>
 					</div>
 					<div className='card__content__container-description'>
 						<p className='text-white font-bold text-lg'>{photo.label}</p>

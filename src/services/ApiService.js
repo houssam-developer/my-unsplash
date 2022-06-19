@@ -34,7 +34,9 @@ export const apiService = (function () {
 				console.log(error);
 			});;
 	}
-	function deletePhoto(id) { }
+	function deletePhoto(id) {
+
+	}
 
 	return {
 		findAll,

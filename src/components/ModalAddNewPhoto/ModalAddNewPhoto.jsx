@@ -14,6 +14,18 @@ function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 	const modalContainerRef = useRef();
 	const formAddNewPhotoRef = useRef();
 
+	useEffect(() => {
+		console.log(`📦 #useEffect() #displayModal ${displayModal}`);
+		if (displayModal) { setCssClasses(CSS_MODAL_VISIBLE); }
+		else { setCssClasses(CSS_MODAL_HIDDEN); }
+	}, [displayModal])
+
+	useEffect(() => {
+		console.log(`📦 #useEffect() #showModal ${showModal}`);
+		setDisplayModal(showModal);
+	}, [showModal])
+
+
 	console.log(`🚀 ModalAddNewPhoto.init()`);
 
 	function handleModalContainerClickEvent(e) {
@@ -33,16 +45,6 @@ function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 		setDisplayModal(false);
 	}
 
-	useEffect(() => {
-		console.log(`📦 #useEffect() #displayModal ${displayModal}`);
-		if (displayModal) { setCssClasses(CSS_MODAL_VISIBLE); }
-		else { setCssClasses(CSS_MODAL_HIDDEN); }
-	}, [displayModal])
-
-	useEffect(() => {
-		console.log(`📦 #useEffect() #showModal ${showModal}`);
-		setDisplayModal(showModal);
-	}, [showModal])
 
 	function handleFormAddNewPhotoEvent(e) {
 		e.preventDefault();

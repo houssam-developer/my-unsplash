@@ -16,6 +16,7 @@ function App() {
 	const [showModalAddNewPhotoFlag, setShowModalAddNewPhotoFlag] = useState(false);
 	const [showModalDeletePhotoFlag, setShowModalDeletePhotoFlag] = useState(false);
 	const [photos, setPhotos] = useState([]);
+	const [targetPhotoToDelete, setTargetPhotoToDelete] = useState({});
 
 	console.log(`🚀 App.init()`);
 
@@ -41,10 +42,11 @@ function App() {
 		updateCssVariablesOnOpenModal();
 	}
 
-	function handleBtnDeletePhoto(e, idx) {
+	function handleBtnDeletePhoto(e, photo) {
 		e.preventDefault();
 		console.log(`🔥 handleBtnDeletePhoto() `);
 
+		setTargetPhotoToDelete(photo);
 		setShowModalAddNewPhotoFlag(false);
 		setShowModalDeletePhotoFlag(true);
 
@@ -59,6 +61,7 @@ function App() {
 	function updateCssVariablesOnCloseModal() {
 		ROOT_DOCUMENT.style.setProperty('--full-page--brightness', '100%');
 		ROOT_DOCUMENT.style.setProperty('--full-page--bg', '#fff');
+		setTargetPhotoToDelete({});
 	}
 
 	function closeModal(closeModalFlag) {
@@ -71,7 +74,7 @@ function App() {
 	return (
 		<div className="">
 			<ModalAddNewPhoto key={showModalAddNewPhotoFlag} showModal={showModalAddNewPhotoFlag} fnCloseModal={closeModal} fnGetPhotos={getPhotos} />
-			<ModalDeletePhoto key={showModalDeletePhotoFlag} showModal={showModalDeletePhotoFlag} fnCloseModal={closeModal} />
+			<ModalDeletePhoto key={showModalDeletePhotoFlag} showModal={showModalDeletePhotoFlag} fnCloseModal={closeModal} photo={targetPhotoToDelete} />
 			<div className="px-2 py-2 sm:py-8 w-full flex flex-col gap-14 full-page-filter">
 				<header className="flex flex-wrap gap-4 md:gap-8 lg:gap-10 xl:gap-14 ">
 					{/* User */}

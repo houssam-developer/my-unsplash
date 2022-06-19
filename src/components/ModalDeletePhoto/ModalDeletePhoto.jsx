@@ -6,29 +6,11 @@ const CSS_MODAL_DEFAULT_VALUES = 'modal-common';
 const CSS_MODAL_VISIBLE = `${CSS_MODAL_DEFAULT_VALUES} flex`;
 const CSS_MODAL_HIDDEN = `${CSS_MODAL_DEFAULT_VALUES} hidden`;
 
-function ModalDeletePhoto({ showModal, fnCloseModal }) {
+function ModalDeletePhoto({ showModal, fnCloseModal, photo }) {
 	const [cssClasses, setCssClasses] = useState('');
 	const [displayModal, setDisplayModal] = useState(false);
 
 	const modalContainerRef = useRef();
-
-	console.log(`🚀 ModalDeletePhoto.init()`);
-
-	function handleModalContainerClickEvent(e) {
-		e.preventDefault();
-
-		if (e.target === modalContainerRef.current) { handleBtnCancelEvent(e); }
-	}
-
-	function handleBtnCancelEvent(e) {
-		e.preventDefault();
-
-		fnCloseModal(true);
-		setCssClasses(CSS_MODAL_HIDDEN);
-		setDisplayModal(false);
-
-		console.log(`🔥 handleBtnCancelEvent()`);
-	}
 
 	useEffect(() => {
 		console.log(`📦 #useEffect() #displayModal ${displayModal}`);
@@ -42,11 +24,39 @@ function ModalDeletePhoto({ showModal, fnCloseModal }) {
 	}, [showModal])
 
 
+	console.log(`🚀 ModalDeletePhoto.init()`);
+
+	function handleModalContainerClickEvent(e) {
+		if (e.target === modalContainerRef.current) { handleBtnCancelEvent(e); }
+	}
+
+	function handleBtnCancelEvent(e) {
+		e.preventDefault();
+		seekCloseModal();
+		console.log(`🔥 handleBtnCancelEvent()`);
+	}
+
+	function seekCloseModal() {
+		fnCloseModal(true);
+		setCssClasses(CSS_MODAL_HIDDEN);
+		setDisplayModal(false);
+	}
+
+	function handleFormSubmitDeletePhoto(e) {
+		e.preventDefault();
+
+		console.log(`🚀 FormSubmit DELETE`);
+
+		apiService.addNewPhoto(photo);
+		fnGetPhotos();
+		seekCloseModal();
+	}
+
 	return (
 		<div ref={modalContainerRef} className={cssClasses} onClick={handleModalContainerClickEvent}>
 			<div className='bg-white py-8 px-4 mx-4 w-full rounded-lg sm:max-w-[620px] sm:px-8 flex flex-col gap-6'>
 				<h2 className="font-['Noto_Sans'] font-medium text-xl sm:text-2xl text-[#333333]">Are you sure ?</h2>
-				<form className="text-sm font-medium text-[#4f4f4f] font-['Noto_Sans'] flex flex-col gap-6" >
+				<form onSubmit={handleFormSubmitDeletePhoto} className="text-sm font-medium text-[#4f4f4f] font-['Noto_Sans'] flex flex-col gap-6" >
 
 					<div className="flex flex-col gap-2">
 						<label htmlFor="passwordUser">Password</label>
