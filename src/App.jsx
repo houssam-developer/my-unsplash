@@ -20,13 +20,17 @@ function App() {
 	console.log(`🚀 App.init()`);
 
 	useEffect(() => {
+		getPhotos();
+	}, []);
+
+	function getPhotos() {
 		apiService.findAll()
 			.then(res => {
 				console.log(`📡 data.photos: `, res.data.photos);
 				setPhotos(res.data.photos);
 			})
 			.catch(err => console.log(`🚩 findAll() #err: `, err))
-	}, []);
+	}
 
 	function handleBtnAddNewPhoto(e) {
 		e.preventDefault();
@@ -66,7 +70,7 @@ function App() {
 
 	return (
 		<div className="">
-			<ModalAddNewPhoto key={showModalAddNewPhotoFlag} showModal={showModalAddNewPhotoFlag} fnCloseModal={closeModal} />
+			<ModalAddNewPhoto key={showModalAddNewPhotoFlag} showModal={showModalAddNewPhotoFlag} fnCloseModal={closeModal} fnGetPhotos={getPhotos} />
 			<ModalDeletePhoto key={showModalDeletePhotoFlag} showModal={showModalDeletePhotoFlag} fnCloseModal={closeModal} />
 			<div className="px-2 py-2 sm:py-8 w-full flex flex-col gap-14 full-page-filter">
 				<header className="flex flex-wrap gap-4 md:gap-8 lg:gap-10 xl:gap-14 ">

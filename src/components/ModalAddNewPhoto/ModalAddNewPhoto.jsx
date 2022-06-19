@@ -7,7 +7,7 @@ const CSS_MODAL_DEFAULT_VALUES = 'modal-common';
 const CSS_MODAL_VISIBLE = `${CSS_MODAL_DEFAULT_VALUES} flex`;
 const CSS_MODAL_HIDDEN = `${CSS_MODAL_DEFAULT_VALUES} hidden`;
 
-function ModalAddNewPhoto({ showModal, fnCloseModal }) {
+function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 	const [cssClasses, setCssClasses] = useState('');
 	const [displayModal, setDisplayModal] = useState(false);
 
@@ -23,12 +23,14 @@ function ModalAddNewPhoto({ showModal, fnCloseModal }) {
 
 	function handleBtnCancelEvent(e) {
 		e.preventDefault();
+		seekCloseModal();
+		console.log(`🔥 handleBtnCancelEvent()`);
+	}
 
+	function seekCloseModal() {
 		fnCloseModal(true);
 		setCssClasses(CSS_MODAL_HIDDEN);
 		setDisplayModal(false);
-
-		console.log(`🔥 handleBtnCancelEvent()`);
 	}
 
 	useEffect(() => {
@@ -58,12 +60,14 @@ function ModalAddNewPhoto({ showModal, fnCloseModal }) {
 
 		const photo = {
 			label: photoLabelArray ? photoLabelArray : 'empty',
-			photoUrlArray: photoUrlArray ? photoUrlArray : 'empty'
+			url: photoUrlArray ? photoUrlArray : 'empty'
 		};
 
 		console.log(`📦 #photo: `, photo);
 
 		apiService.addNewPhoto(photo);
+		fnGetPhotos();
+		seekCloseModal();
 	}
 
 	return (
