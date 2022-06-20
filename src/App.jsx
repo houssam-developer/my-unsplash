@@ -71,6 +71,27 @@ function App() {
 		setShowModalDeletePhotoFlag(false);
 	}
 
+	function handleFormSubmitSearch(e) {
+		e.preventDefault();
+		console.log(`🔥 handleFormSubmitSearch() `);
+		const formData = new FormData(e.target);
+		const searchInputArray = Array.from(formData.entries())
+			.filter(it => it[0] === 'search-keyword')
+			.map(it => [`${it[0]}`, `${it[1]}`]);
+
+		const [searchInputKey, searchInputValue] = searchInputArray[0]; // array in array get the first one
+
+		console.log(`📡 #key: ${searchInputKey} #value: ${searchInputValue} `);
+
+		apiService.findByKeyword(searchInputValue)
+			.then(res => {
+				const photosVal = res.data.photos || [];
+				setPhotos(photosVal)
+				console.log(`👍 ok #photosVal: `, photosVal);
+			})
+			.catch(err => console.log(`🚫 handleFormSubmitSeach() #err: `, err));
+	}
+
 	return (
 		<div className="">
 			<ModalAddNewPhoto key={showModalAddNewPhotoFlag} showModal={showModalAddNewPhotoFlag} fnCloseModal={closeModal} fnGetPhotos={getPhotos} />
@@ -87,10 +108,10 @@ function App() {
 					</div>
 
 					{/* Search */}
-					<div className="container-input" >
+					<form onSubmit={handleFormSubmitSearch} className="container-input" >
 						<MdSearch size={20} />
-						<input type="text" placeholder='Search by name' />
-					</div>
+						<input type="text" placeholder='Search by name' name='search-keyword' />
+					</form>
 
 					{/* Button */}
 					<button onClick={handleBtnAddNewPhoto} className='p-4 px-8 text-xs sm:text-base ml-auto rounded-xl shadow-lg text-white font-bold bg-[#3DB46D] '>Add a photo</button>

@@ -49,8 +49,8 @@ function ModalDeletePhoto({ showModal, fnCloseModal, photo, fnGetPhotos }) {
 		console.log(`🚀 FormSubmit DELETE`);
 
 		apiService.deletePhoto(photo.id);
-		// fnGetPhotos();
-		// seekCloseModal();
+		fnGetPhotos();
+		seekCloseModal();
 	}
 
 	return (

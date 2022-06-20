@@ -61,8 +61,8 @@ function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 		});
 
 		const photo = {
-			label: photoLabelArray ? photoLabelArray : 'empty',
-			url: photoUrlArray ? photoUrlArray : 'empty'
+			label: photoLabelArray ? photoLabelArray : '',
+			url: photoUrlArray ? photoUrlArray : ''
 		};
 
 		console.log(`📦 #photo: `, photo);
