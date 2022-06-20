@@ -1,12 +1,13 @@
 import React from 'react'
 import { useEffect, useRef, useState } from 'react';
+import { apiService } from '../../services/ApiService';
 import './ModalDeletePhoto.scss';
 
 const CSS_MODAL_DEFAULT_VALUES = 'modal-common';
 const CSS_MODAL_VISIBLE = `${CSS_MODAL_DEFAULT_VALUES} flex`;
 const CSS_MODAL_HIDDEN = `${CSS_MODAL_DEFAULT_VALUES} hidden`;
 
-function ModalDeletePhoto({ showModal, fnCloseModal, photo }) {
+function ModalDeletePhoto({ showModal, fnCloseModal, photo, fnGetPhotos }) {
 	const [cssClasses, setCssClasses] = useState('');
 	const [displayModal, setDisplayModal] = useState(false);
 
@@ -47,9 +48,9 @@ function ModalDeletePhoto({ showModal, fnCloseModal, photo }) {
 
 		console.log(`🚀 FormSubmit DELETE`);
 
-		apiService.addNewPhoto(photo);
-		fnGetPhotos();
-		seekCloseModal();
+		apiService.deletePhoto(photo.id);
+		// fnGetPhotos();
+		// seekCloseModal();
 	}
 
 	return (

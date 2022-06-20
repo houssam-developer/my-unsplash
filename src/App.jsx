@@ -74,7 +74,7 @@ function App() {
 	return (
 		<div className="">
 			<ModalAddNewPhoto key={showModalAddNewPhotoFlag} showModal={showModalAddNewPhotoFlag} fnCloseModal={closeModal} fnGetPhotos={getPhotos} />
-			<ModalDeletePhoto key={showModalDeletePhotoFlag} showModal={showModalDeletePhotoFlag} fnCloseModal={closeModal} photo={targetPhotoToDelete} />
+			<ModalDeletePhoto key={showModalDeletePhotoFlag} showModal={showModalDeletePhotoFlag} fnCloseModal={closeModal} photo={targetPhotoToDelete} fnGetPhotos={getPhotos} />
 			<div className="px-2 py-2 sm:py-8 w-full flex flex-col gap-14 full-page-filter">
 				<header className="flex flex-wrap gap-4 md:gap-8 lg:gap-10 xl:gap-14 ">
 					{/* User */}

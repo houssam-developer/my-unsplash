@@ -35,12 +35,19 @@ export const apiService = (function () {
 			});;
 	}
 	function deletePhoto(id) {
-
+		console.log(`🚧 [ApiService] deletePhoto() #id: ${id}`);
+		const targetUrl = `${API_URL_PHOTOS}/${id}`;
+		axios.delete(
+			targetUrl,
+			params
+		).then(res => console.log(`📡 `, res)
+		).catch(err => console.log(`🚫 #err: ${err}`));
 	}
 
 	return {
 		findAll,
-		addNewPhoto
+		addNewPhoto,
+		deletePhoto
 	}
 
 })();
