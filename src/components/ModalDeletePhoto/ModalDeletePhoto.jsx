@@ -62,7 +62,7 @@ function ModalDeletePhoto({ showModal, fnCloseModal, photo, fnGetPhotos }) {
 					<div className="flex flex-col gap-2">
 						<label htmlFor="passwordUser">Password</label>
 						<div className='p-2 flex border-[1px] border-[#bdbdbd] rounded-lg'>
-							<input type="password" name="password-user" id="passwordUser" placeholder='************' />
+							<input className='flex-grow' type="password" name="password-user" id="passwordUser" placeholder='************' />
 						</div>
 					</div>
 					<div className="flex items-center justify-end gap-4 " >
