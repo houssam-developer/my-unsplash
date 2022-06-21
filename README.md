@@ -106,6 +106,7 @@ $ npm run dev
 - [Tailwind] (https://tailwindcss.com/)
 - [Marked - a markdown parser](https://github.com/chjj/marked)
 - [Node-Schedule] (https://www.npmjs.com/package/node-schedule)
+- [Axios] (https://axios-http.com/docs/intro)
 
 ## Contact
 
