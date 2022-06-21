@@ -121,7 +121,7 @@ function App() {
 					<ul className='container-masonry'>
 						{
 							photos.length > 0 ?
-								photos.map(it => <CardItem key={uuidv4()} photo={it} fnBtnDeletePhoto={handleBtnDeletePhoto} />)
+								photos.map(it => <CardItem key={it.id} photo={it} fnBtnDeletePhoto={handleBtnDeletePhoto} />)
 								:
 								<img className='max-w-[250px] mx-auto' src="./images/no-image-available.png" alt="picture of no available image" />
 						}

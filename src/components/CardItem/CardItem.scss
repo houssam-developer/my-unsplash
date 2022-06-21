@@ -4,10 +4,10 @@
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
 
-	// &:hover {
-	// 	--card-content--display: flex;
-	// 	--card-image--brightness: 70;
-	// }
+	&:hover {
+		--card-content--display: flex;
+		--card-image--brightness: 70;
+	}
 
 	&__container-image,
 	&__content {

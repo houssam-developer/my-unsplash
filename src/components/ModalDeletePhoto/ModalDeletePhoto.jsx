@@ -14,6 +14,10 @@ function ModalDeletePhoto({ showModal, fnCloseModal, photo, fnGetPhotos }) {
 	const modalContainerRef = useRef();
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
+	useEffect(() => {
 		console.log(`📦 #useEffect() #displayModal ${displayModal}`);
 		if (displayModal) { setCssClasses(CSS_MODAL_VISIBLE); }
 		else { setCssClasses(CSS_MODAL_HIDDEN); }
@@ -48,9 +52,18 @@ function ModalDeletePhoto({ showModal, fnCloseModal, photo, fnGetPhotos }) {
 
 		console.log(`🚀 FormSubmit DELETE`);
 
-		apiService.deletePhoto(photo.id);
-		fnGetPhotos();
-		seekCloseModal();
+		apiService
+			.deletePhoto(photo.id)
+			.then(res => {
+				if (res.data.action === 'delete') {
+					fnGetPhotos();
+					seekCloseModal();
+				}
+			})
+			.catch(err => {
+				console.log(`🚫 [ModalDeletePhoto] promise #err: `, err)
+				seekCloseModal();
+			})
 	}
 
 	return (

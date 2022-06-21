@@ -2,8 +2,8 @@ import axios from "axios";
 
 
 export const apiService = (function () {
-	const API_URL_BASE = 'http://localhost:8080/';
-	const API_URL_PHOTOS = 'http://localhost:8080/photos';
+	const API_URL_BASE = 'https://my-unsplash-backend-he.herokuapp.com/';
+	const API_URL_PHOTOS = 'https://my-unsplash-backend-he.herokuapp.com/photos';
 
 	const customParams = {
 		mode: 'cors',
@@ -35,26 +35,26 @@ export const apiService = (function () {
 	}
 
 	function addNewPhoto(photo) {
-		axios.post(
-			API_URL_PHOTOS,
-			photo
-		).then(function (response) {
-			console.log('POST response: ', response);
-		})
-			.catch(function (error) {
-				console.log(error);
-			});;
+		return new Promise((resolve, reject) => {
+			axios.post(
+				API_URL_PHOTOS,
+				photo
+			).then(res => resolve(res))
+				.catch(err => reject(err));
+		});
 	}
 
 	function deletePhoto(id) {
 		console.log(`🚧 [ApiService] deletePhoto() #id: ${id}`);
 		const targetUrl = `${API_URL_PHOTOS}/${id}`;
 
-		axios.delete(
-			targetUrl,
-			customParams
-		).then(res => console.log(`📡 `, res)
-		).catch(err => console.log(`🚫 #err: ${err}`));
+		return new Promise((resolve, reject) => {
+			axios.delete(
+				targetUrl,
+				customParams
+			).then(res => resolve(res))
+				.catch(err => reject(err));
+		});
 	}
 
 	return {

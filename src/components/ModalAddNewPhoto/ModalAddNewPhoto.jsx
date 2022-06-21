@@ -15,6 +15,10 @@ function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 	const formAddNewPhotoRef = useRef();
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
+	useEffect(() => {
 		console.log(`📦 #useEffect() #displayModal ${displayModal}`);
 		if (displayModal) { setCssClasses(CSS_MODAL_VISIBLE); }
 		else { setCssClasses(CSS_MODAL_HIDDEN); }
@@ -67,9 +71,15 @@ function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 
 		console.log(`📦 #photo: `, photo);
 
-		apiService.addNewPhoto(photo);
-		fnGetPhotos();
-		seekCloseModal();
+		apiService.addNewPhoto(photo)
+			.then(res => {
+				fnGetPhotos();
+				seekCloseModal();
+			})
+			.catch(err => {
+				console.log(`🚫 [ModalAddNewPhoto] promise #err: `, err);
+				seekCloseModal();
+			})
 	}
 
 	return (
