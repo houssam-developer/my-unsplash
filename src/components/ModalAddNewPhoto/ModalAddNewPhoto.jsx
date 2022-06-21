@@ -19,13 +19,13 @@ function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 	}, []);
 
 	useEffect(() => {
-		console.log(`📦 #useEffect() #displayModal ${displayModal}`);
+		//console.log(`📦 #useEffect() #displayModal ${displayModal}`);
 		if (displayModal) { setCssClasses(CSS_MODAL_VISIBLE); }
 		else { setCssClasses(CSS_MODAL_HIDDEN); }
 	}, [displayModal])
 
 	useEffect(() => {
-		console.log(`📦 #useEffect() #showModal ${showModal}`);
+		//console.log(`📦 #useEffect() #showModal ${showModal}`);
 		setDisplayModal(showModal);
 	}, [showModal])
 

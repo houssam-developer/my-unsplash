@@ -27,7 +27,7 @@ function App() {
 	function getPhotos() {
 		apiService.findAll()
 			.then(res => {
-				console.log(`📡 data.photos: `, res.data.photos);
+				//console.log(`📡 data.photos: `, res.data.photos);
 				setPhotos(res.data.photos);
 			})
 			.catch(err => console.log(`🚩 findAll() #err: `, err))
