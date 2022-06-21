@@ -18,7 +18,7 @@ function App() {
 	const [photos, setPhotos] = useState([]);
 	const [targetPhotoToDelete, setTargetPhotoToDelete] = useState({});
 
-	console.log(`🚀 App.init()`);
+	//console.log(`🚀 App.init()`);
 
 	useEffect(() => {
 		getPhotos();

@@ -30,7 +30,7 @@ function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 	}, [showModal])
 
 
-	console.log(`🚀 ModalAddNewPhoto.init()`);
+	//console.log(`🚀 ModalAddNewPhoto.init()`);
 
 	function handleModalContainerClickEvent(e) {
 		if (e.target === modalContainerRef.current) { handleBtnCancelEvent(e); }

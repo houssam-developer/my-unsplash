@@ -29,7 +29,7 @@ function ModalDeletePhoto({ showModal, fnCloseModal, photo, fnGetPhotos }) {
 	}, [showModal])
 
 
-	console.log(`🚀 ModalDeletePhoto.init()`);
+	//console.log(`🚀 ModalDeletePhoto.init()`);
 
 	function handleModalContainerClickEvent(e) {
 		if (e.target === modalContainerRef.current) { handleBtnCancelEvent(e); }
