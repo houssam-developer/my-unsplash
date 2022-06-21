@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://my-unsplash-he.netlify.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://github.com/houssam-developer/my-unsplash">
       Solution
     </a>
     <span> | </span>
@@ -37,28 +37,44 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![My Image](img/screenshot-demo.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+My Unsplash app can be found here: "https://my-unsplash-he.netlify.app/".
+Thanks to that challenge, I learn to work efficiently in order to succeed.
+And I hope to make more beautifuls websites and become an expert in full-stack developmemt :)
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
-- [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [HTML]
+- [CSS] 
+- [SASS] (https://sass-lang.com/)
+- [React] (https://reactjs.org/)
+- [React-Icons] (https://react-icons.github.io/react-icons/)
+- [UUID] (https://www.npmjs.com/package/uuid)
+- [Vite] (https://vitejs.dev/)
+- [Tailwind] (https://tailwindcss.com/)
+- [Axios] (https://axios-http.com/docs/intro)
+
+
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/rYyhwJAxMfES5jNQ9YsP) was to build an application to complete the given user stories.
+
+Challenge: Create my Unsplash app. Use Front-end libraries like React or Vue. Create your own API. Don’t look at the existing solution. Fulfill user stories below:
+
+- User story: I can see a list of photos in the masonry layout that I have added
+- User story: I can add a new photo to the list - the new photo should be on top of the list
+- User story: I can search for photos by label
+- User story: When I hover a photo, I can see a label and a delete button
+- User story: I can delete images
+- User story (optional): When I delete an image, I can enter my password
+
+Icon: https://google.github.io/material-design-icons/
 
 ## How To Use
 
@@ -74,19 +90,23 @@ $ git clone https://github.com/your-user-name/your-project-name
 $ npm install
 
 # Run the app
-$ npm start
+$ npm run dev
 ```
 
 ## Acknowledgements
 
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
+<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example -->
 
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 - [Node.js](https://nodejs.org/)
+- [React] (https://reactjs.org/)
+- [React-Icons] (https://react-icons.github.io/react-icons/)
+- [Vite] (https://vitejs.dev/)
+- [Tailwind] (https://tailwindcss.com/)
 - [Marked - a markdown parser](https://github.com/chjj/marked)
+- [Node-Schedule] (https://www.npmjs.com/package/node-schedule)
 
 ## Contact
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
+- Website [my-unsplash-he.netlify.app](https://my-unsplash-he.netlify.app/)
+- GitHub [@houssam-developer](https://github.com/houssam-developer/my-unsplash)
