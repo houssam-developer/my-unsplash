@@ -80,13 +80,13 @@ function ModalAddNewPhoto({ showModal, fnCloseModal, fnGetPhotos }) {
 					<div className="flex flex-col gap-2">
 						<label htmlFor="photoLabel">Label</label>
 						<div className='p-2 flex border-[1px] border-[#bdbdbd] rounded-lg'>
-							<input type="text" name="photo-label" id="photoLabel" placeholder='Suspendisse elit massa' />
+							<input className='flex-grow ' type="text" name="photo-label" id="photoLabel" placeholder='Suspendisse elit massa' />
 						</div>
 					</div>
 					<div className="flex flex-col gap-2">
 						<label htmlFor="photoUrl">PhotoUrl</label>
 						<div className='p-2 flex border-[1px] border-[#bdbdbd] rounded-lg'>
-							<input type="text" name="photo-url" id="photoUrl" placeholder='Suspendisse elit massa' />
+							<input className=' flex-grow' type="text" name="photo-url" id="photoUrl" placeholder='Suspendisse elit massa' />
 						</div>
 					</div>
 					<div className="flex items-center justify-end gap-4 " >
