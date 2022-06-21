@@ -127,6 +127,10 @@ function App() {
 						}
 					</ul>
 				</main>
+
+				<footer className='flex justify-center'>
+					<p className="text-center text-[#444] p-4 ">created by <span className='font-medium text-[#111]'>houssam-developer</span> - devChallenges.io</p>
+				</footer>
 			</div>
 		</div>
 	)

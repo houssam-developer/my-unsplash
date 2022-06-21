@@ -56,6 +56,7 @@ And I hope to make more beautifuls websites and become an expert in full-stack d
 - [Vite] (https://vitejs.dev/)
 - [Tailwind] (https://tailwindcss.com/)
 - [Axios] (https://axios-http.com/docs/intro)
+- [Node-Schedule] (https://www.npmjs.com/package/node-schedule)
 
 
 
