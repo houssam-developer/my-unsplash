@@ -109,7 +109,7 @@ function App() {
 
 					{/* Search */}
 					<form onSubmit={handleFormSubmitSearch} className="container-input" >
-						<MdSearch size={20} />
+						<MdSearch className='min-w-[30px]' size={20} />
 						<input type="text" placeholder='Search by name' name='search-keyword' />
 					</form>
 
@@ -119,7 +119,12 @@ function App() {
 
 				<main className=''>
 					<ul className='container-masonry'>
-						{photos.map((photo, idx) => <CardItem key={uuidv4()} photo={photo} idx={idx} fnBtnDeletePhoto={handleBtnDeletePhoto} />)}
+						{
+							photos.length > 0 ?
+								photos.map(it => <CardItem key={uuidv4()} photo={it} fnBtnDeletePhoto={handleBtnDeletePhoto} />)
+								:
+								<img className='max-w-[250px] mx-auto' src="./images/no-image-available.png" alt="picture of no available image" />
+						}
 					</ul>
 				</main>
 			</div>

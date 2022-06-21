@@ -1,16 +1,13 @@
 import React from 'react'
 import './CardItem.scss';
 
-function CardItem({ idx, photo = {}, fnBtnDeletePhoto }) {
-	const isCardTall = idx === 1 || idx === 4 || idx === 6;
-	const cssClassesCard = isCardTall ? 'max-w-full card-tall' : 'max-w-full';
-	const cssClassesContainerImage = isCardTall ? 'container-ratio card__image' : 'card__image';
+function CardItem({ photo = {}, fnBtnDeletePhoto }) {
 
 	return (
-		<li className={cssClassesCard}>
+		<li className='max-w-full'>
 			<article className='card'>
-				<div className={cssClassesContainerImage}>
-					<img className=' rounded-2xl child-ratio' src={photo.url} alt="" />
+				<div className='card__container-image'>
+					<img className='card__container-image__image' src={photo.url} alt="" />
 				</div>
 				<div className='card__content'>
 					<div className='card__content__container-btn'>
