@@ -4,10 +4,9 @@ import App from './App'
 import './index.scss'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	<App />
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
 )
 
-console.log(` 🔦 Don't forget StrictMode on Build for prod`,);
-{/* <React.StrictMode>
-<App />
-</React.StrictMode> */}
+
