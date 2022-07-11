@@ -55,10 +55,16 @@ function ModalDeletePhoto({ showModal, fnCloseModal, photo, fnGetPhotos }) {
 		apiService
 			.deletePhoto(photo.id)
 			.then(res => {
-				if (res.data.action === 'delete') {
+				console.log(`🚀 res: `, res);
+				if (res.status === 202) {
+					fnGetPhotos();
+					seekCloseModal();
+				} else {
+					alert("Delete Failed #status: ", res.status);
 					fnGetPhotos();
 					seekCloseModal();
 				}
+
 			})
 			.catch(err => {
 				console.log(`🚫 [ModalDeletePhoto] promise #err: `, err)
@@ -75,7 +81,7 @@ function ModalDeletePhoto({ showModal, fnCloseModal, photo, fnGetPhotos }) {
 					<div className="flex flex-col gap-2">
 						<label htmlFor="passwordUser">Password</label>
 						<div className='p-2 flex border-[1px] border-[#bdbdbd] rounded-lg'>
-							<input className='flex-grow' type="password" name="password-user" id="passwordUser" placeholder='************' />
+							<input className='flex-grow' type="password" name="password-user" id="passwordUser" placeholder='' />
 						</div>
 					</div>
 					<div className="flex items-center justify-end gap-4 " >

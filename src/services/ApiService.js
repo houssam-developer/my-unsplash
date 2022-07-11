@@ -2,8 +2,10 @@ import axios from "axios";
 
 
 export const apiService = (function () {
-	const API_URL_BASE = 'https://my-unsplash-backend-he.herokuapp.com/';
-	const API_URL_PHOTOS = 'https://my-unsplash-backend-he.herokuapp.com/photos';
+	const API_URL_BASE = 'https://my-unsplash-he.herokuapp.com/';
+	const API_URL_PHOTOS = 'https://my-unsplash-he.herokuapp.com/photos';
+	//const API_URL_BASE = 'http://localhost:8080/';
+	//const API_URL_PHOTOS = 'http://localhost:8080/photos';
 
 	const customParams = {
 		mode: 'cors',
